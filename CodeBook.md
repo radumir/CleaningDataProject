@@ -2,6 +2,8 @@
 
 ##Process of data transformation
 
+The entire code is included in **run_analysis.R** script.
+
 The content is read from the **https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip** as **data.zip** file. 
 
 Then the **data.zip** is unzipped. 
