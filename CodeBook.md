@@ -1,5 +1,39 @@
-Code book for tidy data produced for Cleaning Data Project
-==========================================================
+#Code book
+
+##Process of data transformation
+
+The content is read from the **https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip** as **data.zip** file. 
+
+Then the **data.zip** is unzipped. 
+
+The train data is loaded from */train/X_train.txt*, */train/subject_train.txt* and */train/y_train.txt* into variables *trSet*, *trSubj* and *trAct* respectively.
+
+The test data is loaded from */test/X_test.txt*, */test/subject_test.txt* and */test/y_test.txt* into variables *tsSet*, *tsSubj* and *tsAct* respectively.
+
+From this data frames are produced the merged data:
+
+*mSet* <- rbind(*trSet*,*tsSet*)
+
+*mSubj* <- rbind(*trSubj*,*tsSubj*)
+
+*mAct* <- rbind(*trAct*,*tsAct*)
+
+The range of columns of interest is defined in the *cols* variable.
+
+The *mSet2* variable is obtained from *mSet* subsetting the *col* columns from it.
+
+The sets of activity labels is load from */activity_labels.txt* into *actLabels* variable and the column activity is added (finally as factor) to *mSet2*.
+
+Also from *mSubj* is added the column *Subject* to the *mSet2*.
+
+The names for the columns of tidy data set are read from */features.txt* and are subset to the *cols* rows and finally added as names to the *mSet2* set.
+
+The *mSet3* data frame is obtained from *mSet2* by aggregating using mean on Subject and Activity.
+
+The final *mSet4* is obtained from *mSet3* by discarding the last 2 columns that are meaningless, and, finally the *mSet4* is saved as **Step5DataSet.txt** file.
+
+
+##Final tidy data set description
 
 The file **Step5DataSet.txt** produced by the script **run_analysis.R** has 180 observarions of 68 variables.
 
